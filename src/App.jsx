@@ -288,7 +288,7 @@ function App() {
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label id='taskNameLabel' className="block text-sm font-medium text-gray-700 mb-2">
                     Task Name *
                   </label>
                   <input
@@ -298,14 +298,16 @@ function App() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                     placeholder="Enter task name..."
                     required
+                    id='taskNameInput'
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label id='taskTime' className="block text-sm font-medium text-gray-700 mb-2">
                     Task Time *
                   </label>
                   <input
+                  id='tasktimeInput'
                     type="datetime-local"
                     value={taskTime}
                     onChange={(e) => setTaskTime(e.target.value)}
@@ -315,10 +317,11 @@ function App() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label id='taskTimeReminderLabel' className="block text-sm font-medium text-gray-700 mb-2">
                     Remind me (minutes before)
                   </label>
                   <select
+                  id='taskTime'
                     value={reminderMinutes}
                     onChange={(e) => setReminderMinutes(Number(e.target.value))}
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
