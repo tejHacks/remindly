@@ -53,11 +53,23 @@ function App() {
     }
   }
 
-  // Show notification with vibration
+  // Show notification with vibration and audio
   const showNotification = (task) => {
+    // Create audio object for notification sound
+    const notificationSound = new Audio('/audio/notification.mp3')
+
     // Vibration API
     if ('vibrate' in navigator) {
       navigator.vibrate([200, 100, 200, 100, 200])
+      // Play audio alongside vibration
+      notificationSound.play().catch(error => {
+        console.error('Error playing notification sound:', error)
+      })
+    } else {
+      // Play audio if vibration is not supported
+      notificationSound.play().catch(error => {
+        console.error('Error playing notification sound:', error)
+      })
     }
 
     // Notification API
@@ -81,6 +93,9 @@ function App() {
 
     // Fallback alert for browsers without notification support
     if (!('Notification' in window) || Notification.permission !== 'granted') {
+      notificationSound.play().catch(error => {
+        console.error('Error playing notification sound:', error)
+      })
       alert(`⏰ Reminder: ${task.name}`)
     }
   }
